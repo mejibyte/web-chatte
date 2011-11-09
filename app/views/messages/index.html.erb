@@ -1,7 +1,7 @@
 <div class="light">
-  <div id="messages">
+  <%= content_tag :div, :id => "messages", :"data-url" => messages_path(:format => :js) do%>
     <%= render "messages" %>
-  </div>
+  <% end %>
   
   <div class="center loading" style="display: none"><%= image_tag "spinner.gif" %></div>
   

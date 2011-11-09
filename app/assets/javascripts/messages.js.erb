@@ -1,8 +1,12 @@
 $(function() {  
-  $(document).bind("ajax:before", function() {
+  $("form").bind("ajax:before", function() {
     $(".loading").slideDown();
   });
-  $(document).bind("ajax:complete", function() {
+  $("form").bind("ajax:complete", function() {
     $(".loading").slideUp();
-  });  
+  });
+  
+  if ($("#messages").size() > 0) {
+    setInterval('$.getScript($("#messages").attr("data-url"));', 1000 * 5); // Periodically poll for changes
+  }
 });
