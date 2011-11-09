@@ -10,6 +10,9 @@ class MessagesController < ApplicationController
     @message.from = current_nickname
     @message.save
     OutgoingMessage.create(@message.attributes)
-    redirect_to messages_path
+    respond_to do |format|
+      format.html { redirect_to messages_path }
+      format.js { @messages = PublicMessage.limit(100).reverse }
+    end
   end
 end
